@@ -15,7 +15,19 @@ public class CustomerRepository {
     @Transactional /*This annotation will start and commit the transaction declaratively*/
     public void addNewCustomer(Customer c){
        // em.getTransaction().begin();
-        em.persist(c); //Saves customer object in customer table
+        //Customer c= new Customer() --> this is new State
+        em.persist(c); //Saves customer object in customer table // Managed state
+       // c.setAddress("address 108");--Here also the object will be in managed state. If line 20 is uncommented, the address will be updated to 108
+        //eventhough we persisted in the line 19.
         //em.getTransaction().commit();
+    }
+    //After this method call, the object will move to detached stated
+    //After addNewCustomer() method, the object will go to detached state
+    public void searchById(int id){
+        Customer c=em.find(Customer.class,id);
+        if(c!=null)
+            System.out.println("Customer id is "+c.getCustId()+ " Customer name is "+c.getCustName()+ " Customer address is "+c.getAddress());
+        else
+            System.out.println("customer doesn't exists !");
     }
 }
