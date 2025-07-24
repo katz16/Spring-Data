@@ -13,14 +13,15 @@ public class SpringDataJpaHibernateApplication {
 
 
 		ApplicationContext ctx=SpringApplication.run(SpringDataJpaHibernateApplication.class, args);
-		Customer c= new Customer();
+		/*Customer c= new Customer();
 		c.setCustId(107);
 		c.setCustName("Jack");
-		c.setAddress("address 107");
+		c.setAddress("address 107");*/
 		CustomerRepository repo= ctx.getBean(CustomerRepository.class);
 		//repo.searchById(101);
-		repo.addNewCustomer(c);
-		c.setAddress("109");
+		//repo.addNewCustomer(c);
+		//c.setAddress("109");
+		repo.updateAddress(110, "new address");
 		System.out.println("done !");
 	}
 

@@ -30,4 +30,14 @@ public class CustomerRepository {
         else
             System.out.println("customer doesn't exists !");
     }
+    @Transactional
+    public void updateAddress(int id, String address){
+        Customer c= em.find(Customer.class,id);
+        if(c!=null) {
+            c.setAddress(address);
+            em.refresh(c);
+        }
+        else
+            System.out.println("record doesn't exist !");
+    }
 }
