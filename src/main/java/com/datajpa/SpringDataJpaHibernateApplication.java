@@ -33,11 +33,11 @@ public class SpringDataJpaHibernateApplication {
 		a.setPinCode(123456);
 		a.setPlaceName("Sicily Italy");
 		e.setAddress(a);*/
-		EmployeeRepository employeeRepository=ctx.getBean(EmployeeRepository.class);
+		//EmployeeRepository employeeRepository=ctx.getBean(EmployeeRepository.class);
 		//employeeRepository.addNewEmployee(e);
 		//employeeRepository.searchEmployeeById(101);
 		//employeeRepository.allEmps();
-		employeeRepository.searchEmployeeByPlace("Monaco");
+		//employeeRepository.searchEmployeeByPlace("Monaco");
 		System.out.println("done !");
 	}
 
