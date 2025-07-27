@@ -1,9 +1,6 @@
 package com.datajpa.entity;
 
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinTable;
+import jakarta.persistence.*;
 
 import java.util.List;
 @Entity
@@ -12,7 +9,7 @@ public class Student {
     private int studId;
     private String studName;
     private String course;
-    @ElementCollection
+    @ElementCollection(fetch= FetchType.EAGER)
     @JoinTable(name="stud_address") // this annotation is optional.
     // This can give name of the newly formed address table
     private List<Address> address;

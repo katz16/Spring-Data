@@ -1,5 +1,6 @@
 package com.datajpa.repository;
 
+import com.datajpa.entity.Address;
 import com.datajpa.entity.Student;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -17,12 +18,16 @@ public class StudentRepository {
     public void addStudent(Student s){
         em.persist(s);
     }
-
+    @Transactional
     public void searchById(int id){
         Student s= em.find(Student.class, id);
+        List<Address>list=s.getAddress();
+        for(Address a:list){
+            System.out.println("Address is "+a.getDoorNo()+" "+a.getPlaceName()+" "+a.getPinCode());
+        }
         if(s!=null){
             System.out.println("Student found with id "+id+" is "+s.getStudName());
-            System.out.println("Address of the student is : "+s.getAddress());
+
         }else{
             System.out.println("No student found with id "+id);
         }
